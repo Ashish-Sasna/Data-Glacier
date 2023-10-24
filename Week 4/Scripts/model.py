@@ -23,6 +23,17 @@ diab_df = pd.DataFrame(data=diab_data.data,
 
 diab_tar = pd.DataFrame(data=diab_data.target) 
 
+print(diab_data.feature_names)
+
+diab_df = diab_df.rename(columns={
+    's1' : 'tc',
+    's2' : 'ldl',
+    's3' : 'hdl',
+    's4' : 'tch',
+    's5' : 'ltg',
+    's6' : 'glu'
+    })
+
 # Splitting the data into train and test
 X_train, X_test, y_train, y_test = train_test_split(diab_df, 
                                                     diab_tar, 
@@ -36,4 +47,21 @@ y_pred = lr_model.predict(X_test)
 
 # Save the model
 os.chdir('..')
-pkl.dump(lr_model, open(os.path.join(os.getcwd(), 'model.pkl'), 'wb'))
+pkl.dump(lr_model, 
+         open(os.path.join(os.getcwd(), 
+                           'model.pkl'), 
+              'wb'))
+
+load_lr_model = pkl.load(open(os.path.join(os.getcwd(), 'model.pkl'), 'rb'))
+
+load_lr_model.predict([[0.0045341, 
+                        -0.044642, 
+                        -0.006206, 
+                        -0.015999, 
+                        0.125019, 
+                        0.125198, 
+                        0.019187, 
+                        0.034309, 
+                        0.032433, 
+                        -0.005220]])
+
