@@ -46,13 +46,9 @@ lr_model = lr.fit(X_train, y_train)
 y_pred = lr_model.predict(X_test)
 
 # Save the model
-os.chdir('..')
-pkl.dump(lr_model, 
-         open(os.path.join(os.getcwd(), 
-                           'model.pkl'), 
-              'wb'))
+pkl.dump(lr_model, open('../model.pkl', 'wb'))
 
-load_lr_model = pkl.load(open(os.path.join(os.getcwd(), 'model.pkl'), 'rb'))
+load_lr_model = pkl.load(open('../model.pkl', 'rb'))
 
 load_lr_model.predict([[0.0045341, 
                         -0.044642, 

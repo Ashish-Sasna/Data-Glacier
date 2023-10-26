@@ -14,22 +14,22 @@ from flask import render_template
 
 app = Flask(__name__)
 
-os.chdir('..')
-model = pkl.load(open(os.path.join(os.getcwd(), 'model.pkl'), 'rb'))
+#os.chdir('..')
+model = pkl.load(open('..\model.pkl', 'rb'))
 
 @app.route('/')
-def homepage():
+def home():
     
     return render_template('home.html')
 
-@app.route('/predict', methods=['POST'])
+@app.route('/predict', methods=['GET', 'POST'])
 def predict():
     
     features = [float(x) for x in request.form.values()]
     features = [np.array(features)]
     result = model.predict(features)[0]
     
-    return render_template('home.html', **locals)
+    return render_template('../Template/home.html', **locals)
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     app.run(debug=True)
