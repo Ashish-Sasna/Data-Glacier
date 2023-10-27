@@ -24,17 +24,13 @@ h1 {
     margin: 20px auto;
 }
 
-.predict, .result {
+.predict {
     padding: 20px;
     background-color: #fff;
     border: 1px solid #ddd;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     margin-bottom: 20px;
-}
-
-.result {
-    display: none;
 }
 
 form {
@@ -64,6 +60,7 @@ form button:hover {
 
 .result {
     text-align: center;
+    padding: 20px;
 }
 
 @media (max-width: 768px) {

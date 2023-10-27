@@ -15,6 +15,9 @@ from sklearn.datasets import load_diabetes
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
 
+pd.set_option('display.max_rows', 500)
+pd.set_option('display.max_columns', 500)
+pd.set_option('display.width', 1000)
 
 # Loading diabetes dataset
 diab_data = load_diabetes(as_frame=True)
@@ -22,8 +25,6 @@ diab_df = pd.DataFrame(data=diab_data.data,
                        columns=diab_data.feature_names)
 
 diab_tar = pd.DataFrame(data=diab_data.target) 
-
-print(diab_data.feature_names)
 
 diab_df = diab_df.rename(columns={
     's1' : 'tc',
@@ -33,6 +34,10 @@ diab_df = diab_df.rename(columns={
     's5' : 'ltg',
     's6' : 'glu'
     })
+
+data_df = pd.concat((diab_df, diab_tar), axis=1)
+
+print(data_df.head())
 
 # Splitting the data into train and test
 X_train, X_test, y_train, y_test = train_test_split(diab_df, 
