@@ -1,0 +1,77 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Fri Oct 27 10:38:13 2023
+
+@author: Ashish S
+"""
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f8f8;
+    margin: 0;
+}
+
+h1 {
+    text-align: center;
+}
+
+.note-container {
+    text-align: center;
+}
+
+.container {
+    max-width: 600px;
+    margin: 20px auto;
+}
+
+.predict, .result {
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.result {
+    display: none;
+}
+
+form {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 10px;
+}
+
+form label, form input {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+form button {
+    grid-column: span 2;
+    background-color: #4caf50;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+form button:hover {
+    background-color: #45a049;
+}
+
+.result {
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+    .container {
+        margin: 10px;
+    }
+}
+
+
+
+

@@ -1,23 +1,52 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <meta charset="UTF-8">
         <title>Diabetes Progression Prediction</title>
+        <link rel="stylesheet" type="text/css" href="../static/style.css">
     </head>
     <body>
         <h1>Predict Progression of Diabetes after 1 year from baseline</h1>
-        <b>Note:</b>All the values should be between 1 and -1 as the model accepts only these values.
-        <form action="/predict" method="POST">
-            Enter Age <input type="text" name="age" placeholder="Age" required="required" /><br>
-            Enter Sex <input type="text" name="sex" placeholder="Sex" required="required" /><br>
-            Enter BMI <input type="text" name="bmi" placeholder="BMI" required="required" /><br>
-            Enter Blood Pressure <input type="text" name="bp" placeholder="BP" required="required" /><br>
-            Enter Total Serum Cholesterol <input type="text" name="tc" placeholder="TC" required="required" /><br>
-            Enter Low-Density Lipoproteins <input type="text" name="ldl" placeholder="LDL" required="required" /><br>
-            Enter High-Density Lipoproteins <input type="text" name="hdl" placeholder="HDL" required="required" /><br>
-            Enter Total Cholesterol <input type="text" name="tch" placeholder="TCH" required="required" /><br>
-            Enter Triglycerides Level <input type="text" name="ltg" placeholder="LTG" required="required" /><br>
-            Enter Blood Sugar Level <input type="text" name="glu" placeholder="GLU" required="required" /><br>
-        </form>
-        <button type="submit">Predict</button>
+        <div class="note-container">
+            <b>Note:</b> All the values should be between 1 and -1 as the model accepts only these values.
+        </div>
+        <br>
+        <div class="container">
+            <div class="predict">
+                <form action="/predict" method="POST" onsubmit="showResult(event)">
+                    Enter Age <input type="text" name="age" placeholder="Age" required="required" />
+                    
+                    Enter Sex <input type="text" name="sex" placeholder="Sex" required="required" />
+                    
+                    Enter BMI <input type="text" name="bmi" placeholder="BMI" required="required" />
+                    
+                    Enter Blood Pressure <input type="text" name="bp" placeholder="BP" required="required" />
+                    
+                    Enter Total Serum Cholesterol <input type="text" name="tc" placeholder="TC" required="required" />
+                    
+                    Enter Low-Density Lipoproteins <input type="text" name="ldl" placeholder="LDL" required="required" />
+                    
+                    Enter High-Density Lipoproteins <input type="text" name="hdl" placeholder="HDL" required="required" />
+                    
+                    Enter Total Cholesterol <input type="text" name="tch" placeholder="TCH" required="required" />
+                    
+                    Enter Triglycerides Level <input type="text" name="ltg" placeholder="LTG" required="required" />
+                    
+                    Enter Blood Sugar Level <input type="text" name="glu" placeholder="GLU" required="required" />
+                    
+                    <br>
+                    <button type="submit">Predict</button>
+                </form>
+            </div>
+            <div class="result" id="predictionResult">
+                {{ prediction_result }}
+            </div>
+            <script>
+                function showResult(event) {
+                    event.preventDefault();
+                    document.getElementById("predictionResult").style.display = "block";
+                }
+            </script>
+        </div>
     </body>
 </html>

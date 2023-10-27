@@ -28,8 +28,9 @@ def predict():
     features = [float(x) for x in request.form.values()]
     features = [np.array(features)]
     result = model.predict(features)[0]
+    result = round(result[0], 3)
     
-    return render_template('../Template/home.html', **locals)
+    return render_template('home.html', prediction_result='Diabetes progression value is {}'.format(result))
 
 if __name__ == "__main__":
     app.run(debug=True)
