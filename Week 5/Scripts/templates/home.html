@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Diabetes Progression Prediction</title>
+        <link rel="stylesheet" type="text/css" href="../static/style.css">
+    </head>
+    <body>
+        <h1>Predict Progression of Diabetes after 1 year from baseline</h1>
+        <div class="note-container">
+            <b>Note:</b> All the values should be between 1 and -1 as the model accepts only these values.
+        </div>
+        <br>
+        <div class="container">
+            <div class="predict">
+                <form action="/predict" method="POST">
+                    Enter Age <input type="text" name="age" placeholder="Age" value="{{ request.form['age'] if 'age' in request.form else '' }}" required="required" />
+                    
+                    Enter Sex <input type="text" name="sex" placeholder="Sex" value="{{ request.form['sex'] if 'sex' in request.form else '' }}" required="required" />
+                    
+                    Enter BMI <input type="text" name="bmi" placeholder="BMI" value="{{ request.form['bmi'] if 'bmi' in request.form else '' }}" required="required" />
+                    
+                    Enter Blood Pressure <input type="text" name="bp" placeholder="BP" value="{{ request.form['bp'] if 'bp' in request.form else '' }}" required="required" />
+                    
+                    Enter Total Serum Cholesterol <input type="text" name="tc" placeholder="TC" value="{{ request.form['tc'] if 'tc' in request.form else '' }}" required="required" />
+                    
+                    Enter Low-Density Lipoproteins <input type="text" name="ldl" placeholder="LDL" value="{{ request.form['ldl'] if 'ldl' in request.form else '' }}" required="required" />
+                    
+                    Enter High-Density Lipoproteins <input type="text" name="hdl" placeholder="HDL" value="{{ request.form['hdl'] if 'hdl' in request.form else '' }}"required="required" />
+                    
+                    Enter Total Cholesterol <input type="text" name="tch" placeholder="TCH" value="{{ request.form['tch'] if 'tch' in request.form else '' }}" required="required" />
+                    
+                    Enter Triglycerides Level <input type="text" name="ltg" placeholder="LTG" value="{{ request.form['ltg'] if 'ltg' in request.form else '' }}" required="required" />
+                    
+                    Enter Blood Sugar Level <input type="text" name="glu" placeholder="GLU" value="{{ request.form['glu'] if 'glu' in request.form else '' }}" required="required" />
+                    
+                    <br>
+                    <button type="submit">Predict</button>
+                </form>
+            </div>
+            <div class="result" id="predictionResult">
+                {{ prediction_result }}
+            </div>
+        </div>
+    </body>
+</html>
