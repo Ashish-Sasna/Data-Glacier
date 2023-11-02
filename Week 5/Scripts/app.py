@@ -6,6 +6,7 @@ Created on Tue Oct 24 14:08:45 2023
 """
 
 import os
+import sys
 import numpy as np
 import pickle as pkl
 from flask import Flask
@@ -15,7 +16,8 @@ from flask import render_template
 app = Flask(__name__)
 
 # Load the model
-model = pkl.load(open('..\model.pkl', 'rb'))
+model_path = os.path.join(os.getcwd(), 'model.pkl')
+model = pkl.load(open(model_path, 'rb'))
 
 # Route to the homepage
 @app.route('/')
@@ -35,4 +37,4 @@ def predict():
     return render_template('home.html', prediction_result='Diabetes progression result is {}'.format(result))
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=True, host='0.0.0.0', port=5000)
