@@ -1,0 +1,16 @@
+
+file_type: csv
+file_name: game_dataset
+file_path: 'Dataset/archive/game_dataset.csv'
+inbound_delimiter: ","
+outbound_delimiter: "|"
+columns: 
+    - app_id
+    - app_name
+    - review_id
+    - language
+    - review
+    - timestamp_created
+    - timestamp_updated
+    - recommended
+    - votes_helpful
